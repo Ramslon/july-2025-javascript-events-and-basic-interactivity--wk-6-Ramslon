@@ -20,6 +20,33 @@ counterBtn.addEventListener('click', () => {
     countSpan.textContent = count;
 });
 
+// --- Dropdown Menu ---
+// Handles showing/hiding the dropdown and selecting an option
+const dropdownToggle = document.getElementById('dropdown-toggle');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const dropdownItems = document.querySelectorAll('.dropdown-item');
+const dropdownSelected = document.getElementById('dropdown-selected');
+
+// Toggle dropdown visibility
+dropdownToggle.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('show');
+});
+
+// Select an option and display it
+dropdownItems.forEach(item => {
+    item.addEventListener('click', () => {
+        dropdownSelected.textContent = `Selected: ${item.textContent}`;
+        dropdownMenu.classList.remove('show');
+    });
+});
+
+// Optional: Hide dropdown if clicking outside
+document.addEventListener('click', (e) => {
+    if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+    }
+});
+
 // --- Collapsible FAQ Section ---
 const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach((btn) => {
